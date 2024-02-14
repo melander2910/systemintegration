@@ -12,13 +12,14 @@ const csvFilePath: string = "../../user.csv"
 const txtFilePath: string = "../../user.txt"
 
 
-function readUserFromJson(filePath: string) {
+function readUserFromJson(filePath: string): User {
     let jsonData = fs.readFileSync(filePath, 'utf-8');
     let user: User = JSON.parse(jsonData);
-    console.log("JSON: ", user);
+    // console.log("JSON: ", user);
+    return user;
 }
 
-async function readUserFromXml(filePath: string){
+async function readUserFromXml(filePath: string): Promise<User> {
     let xmlData = fs.readFileSync(filePath, 'utf-8');
     const parser = new xml2js.Parser({explicitArray: false});
     let e = await parser.parseStringPromise(xmlData);
@@ -30,13 +31,14 @@ async function readUserFromXml(filePath: string){
         clients: e.root.clients,
         timeTrackings: e.root.timeTrackings
     }
-    console.log("XML: ", user);
+    return user;
 }
 
-function readUserFromYaml(filePath: string) {
+function readUserFromYaml(filePath: string): User {
     let yamlData = fs.readFileSync(filePath, 'utf-8');
     let user: User = yaml.load(yamlData) as User;
-    console.log("YAML: ", user);
+    // console.log("YAML: ", user);
+    return user;
 }
 
 function readUserFromCsv(filePath: string) {
@@ -48,7 +50,7 @@ function readUserFromCsv(filePath: string) {
         delimiter: ',',
         columns: headers,
     }, (error, result: User[]) => {
-        console.log(result);
+        // console.log(result);
     }
     )
 }
@@ -57,14 +59,16 @@ function readUserFromCsv(filePath: string) {
 function readUserFromTxt(filePath: string) {
     let jsonData = fs.readFileSync(filePath, 'utf-8');
     let user: User = JSON.parse(jsonData);
-    console.log("TXT: ", user);
+    // console.log("TXT: ", user);
 }
 
-readUserFromJson(jsonFilePath);
-readUserFromXml(xmlFilePath);
-readUserFromYaml(yamlFilePath);
-readUserFromCsv(csvFilePath);
-readUserFromTxt(txtFilePath);
+export {readUserFromJson, readUserFromXml, readUserFromCsv, readUserFromYaml, readUserFromTxt}
+
+// readUserFromJson(jsonFilePath);
+// readUserFromXml(xmlFilePath);
+// readUserFromYaml(yamlFilePath);
+// readUserFromCsv(csvFilePath);
+// readUserFromTxt(txtFilePath);
 
 
 
