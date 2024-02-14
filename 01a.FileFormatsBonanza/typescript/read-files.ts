@@ -4,6 +4,8 @@ import yaml from 'js-yaml'
 import {parse} from 'csv-parse'
 
 import { User } from './user';
+import { Client } from './client';
+import { TimeTracking } from './time-trackings';
 
 const jsonFilePath: string = "../../user.json"
 const xmlFilePath: string = "../../user.xml"
@@ -15,7 +17,6 @@ const txtFilePath: string = "../../user.txt"
 function readUserFromJson(filePath: string): User {
     let jsonData = fs.readFileSync(filePath, 'utf-8');
     let user: User = JSON.parse(jsonData);
-    // console.log("JSON: ", user);
     return user;
 }
 
@@ -37,29 +38,19 @@ async function readUserFromXml(filePath: string): Promise<User> {
 function readUserFromYaml(filePath: string): User {
     let yamlData = fs.readFileSync(filePath, 'utf-8');
     let user: User = yaml.load(yamlData) as User;
-    // console.log("YAML: ", user);
     return user;
 }
 
-function readUserFromCsv(filePath: string) {
-    const headers = ['Id','Firstname','Lastname','Email','Id','UserId','StartDate','EndDate','Title','Description','ClientId','ClientsId','UsersId','Id','Firstname','Lastname','PhoneNumber','Email','CompanyName']
-    const csvData = fs.readFileSync(csvFilePath, 'utf-8');
-    
-    const rows: User[] = []
-    parse(csvData, {
-        delimiter: ',',
-        columns: headers,
-    }, (error, result: User[]) => {
-        // console.log(result);
-    }
-    )
+function readUserFromCsv(filePath: string): string {
+    const csvData = fs.readFileSync(filePath, 'utf-8');
+    // TODO: use csv parser, but how do i figure out which are the nested objects?
+    return csvData;
 }
 
-// txt file with json format
-function readUserFromTxt(filePath: string) {
+function readUserFromTxt(filePath: string): User {
     let jsonData = fs.readFileSync(filePath, 'utf-8');
     let user: User = JSON.parse(jsonData);
-    // console.log("TXT: ", user);
+    return user;
 }
 
 export {readUserFromJson, readUserFromXml, readUserFromCsv, readUserFromYaml, readUserFromTxt}

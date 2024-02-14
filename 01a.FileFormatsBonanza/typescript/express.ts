@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { readUserFromJson, readUserFromXml, readUserFromYaml } from './read-files';
+import { readUserFromCsv, readUserFromJson, readUserFromTxt, readUserFromXml, readUserFromYaml } from './read-files';
 
 const app = express();
 
@@ -12,18 +12,28 @@ const txtFilePath: string = "../../user.txt"
 app.use(express.json());
 
 app.get('/json', (req: Request, res: Response) => {
-    var UsersFromJson = readUserFromJson(jsonFilePath);
-    res.send(UsersFromJson);
+    var UserFromJson = readUserFromJson(jsonFilePath);
+    res.send(UserFromJson);
 });
 
 app.get('/xml', async (req: Request, res: Response) => {
-    var UsersFromXml = await readUserFromXml(xmlFilePath);
-    res.send(UsersFromXml);
+    var UserFromXml = await readUserFromXml(xmlFilePath);
+    res.send(UserFromXml);
 });
 
 app.get('/yaml', (req: Request, res: Response) => {
-    var UsersFromYaml = readUserFromYaml(yamlFilePath);
-    res.send(UsersFromYaml);
+    var UserFromYaml = readUserFromYaml(yamlFilePath);
+    res.send(UserFromYaml);
+});
+
+app.get('/csv', (req: Request, res: Response) => {
+    const usersFromCsv = readUserFromCsv(csvFilePath);
+    res.json(usersFromCsv);
+});
+
+app.get('/txt', (req: Request, res: Response) => {
+    var UsersFromTxt = readUserFromTxt(txtFilePath);
+    res.send(UsersFromTxt);
 });
 
 app.listen(3000, () => {
