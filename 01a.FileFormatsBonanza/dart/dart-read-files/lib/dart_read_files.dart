@@ -12,14 +12,15 @@ import 'package:yaml/yaml.dart';
 import 'package:csv/csv.dart';
 
 
-void readFromJson(){
+User readFromJson(String filePath){
   var path = "../../../user.json";
   var jsonData = File(path).readAsStringSync();
   var user = User.fromJson(jsonData);
-  print(user);
+  // print(user);
+  return user;
 }
 
-void readFromXml(){
+User readFromXml(String filePath){
   var path = "../../../user.xml";
   var xmlData = File(path).readAsStringSync();
   final xmlParser = Xml2Json();
@@ -34,9 +35,10 @@ void readFromXml(){
     email: root['email'],
     );
   print(user);
+  return user;
 }
 
-void readFromYaml(){
+User readFromYaml(String filePath){
   var path = "../../../user.yaml";
   var yamlData = File(path).readAsStringSync();
   var yaml = loadYaml(yamlData);
@@ -48,19 +50,21 @@ void readFromYaml(){
     clients: (yaml['clients'] as YamlList).map((client) => Client.fromYaml(client as YamlMap)).toList(),
     timeTrackings: (yaml['timeTrackings'] as YamlList).map((timeTracking) => TimeTracking.fromYaml(timeTracking as YamlMap)).toList()
   );
-  print(user);
+  return user;
 }
 
-void readFromCsv(){
+String readFromCsv(String filePath){
   var path = "../../../user.csv";
   var jsonData = File(path).readAsStringSync();
   // var user = json.decode(jsonData);
   print(jsonData);
+  return jsonData;
 }
 
-void readFromTxt(){
+User readFromTxt(String filePath){
   var path = "../../../user.txt";
   var jsonData = File(path).readAsStringSync();
   var user = User.fromJson(jsonData);
   print(user);
+  return user;
 }

@@ -11,6 +11,12 @@ const txtFilePath: string = "../../user.txt"
 
 app.use(express.json());
 
+app.get('/xml', async (request, response) => {
+    const res = await fetch("http://localhost:5050/xml");
+    var data = await res.json();
+    response.send(data);
+});
+
 app.get('/json', (req: Request, res: Response) => {
     var UserFromJson = readUserFromJson(jsonFilePath);
     res.send(UserFromJson);
