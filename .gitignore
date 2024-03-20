@@ -310,3 +310,12 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,node
+WebMVCApp/bin
+WebMVCApp/obj
+.idea
+timertrackerWebhook/WebMVCApp/bin
+timertrackerWebhook/WebMVCApp/wwwroot
+timertrackerWebhook/WebMVCApp/obj
+timertrackerWebhook/WebMVCApp/appsettings.json
+timertrackerWebhook/WebMVCApp/appsettings.Development.json
+.DS_Store
