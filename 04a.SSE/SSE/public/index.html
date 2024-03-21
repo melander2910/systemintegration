@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SSE</title>
+    </head>
+    <body>
+        <h1>SSE</h1>
+        <div id="date"></div>
+
+        <script>
+            const dateDiv = document.querySelector("#date");
+
+            // const eventSource = new EventSource("http://localhost:8080/random-number");
+            const eventSource = new EventSource("http://localhost:8888/api/sse");
+            console.log("sse");
+            eventSource.onmessage = (event) => {
+            console.log("on message");
+
+                console.log(event);
+            };
+        </script>
+    </body>
+</html>

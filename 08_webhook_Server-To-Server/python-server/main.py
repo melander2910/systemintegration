@@ -13,7 +13,7 @@ def root():
 
 @app.get("/requestexpress")
 def root():
-        r = requests.get("http://localhost:8080/")
+        r = requests.get("http://localhost:5555/")
         data = r.json()
         return data
 
