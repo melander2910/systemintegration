@@ -1,0 +1,8 @@
+Id,Url,ContentType,Secret,EventType
+2,http://localhost:5555/weekend,application/json,thisismyspecialextrasuperverylongnotusedsecret,Timetracking.OnWeekend
+3,localhost:5000/api/myendpoint,application/json,thisismysecret,Timetracking.OnWeekend
+4,https://bbac-195-249-146-100.ngrok-free.app/recieve_webhook,application/json,TestSecret,Timetracking.OnWeekend
+5,https://bbac-195-249-146-100.ngrok-free.app/recieve_webhook,application/json,TestSecret,Timetracking.OnWeekend
+6,https://bbac-195-249-146-100.ngrok-free.app/recieve_webhook,application/json,TestSecret,Timetracking.OnWeekend
+7,https://bbac-195-249-146-100.ngrok-free.app/recieve_webhook,application/json,TestSecret,Timetracking.OnWeekend
+8,https://bbac-195-249-146-100.ngrok-free.app/recieve_webhook,application/json,TestSecret,Timetracking.OnWeekend

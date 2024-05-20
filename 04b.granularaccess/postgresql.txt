@@ -1,0 +1,2 @@
+read about advantages and disadvantages
+https://bryteflow.com/sql-server-vs-postgres-how-to-migrate-sql-to-postgresql/

@@ -1,0 +1,10 @@
+I followed this documentation:
+https://dbdocs.io/docs
+
+https://dbml.dbdiagram.io/cli/#convert-a-sql-file-to-dbml
+
+I took a backup of my PostgreSQL database manually through PgAdmin4.
+I used a sql to dbml command.
+Used dbdocs build command on the dbml file.
+Created a project in dbdocs called SI.
+https://dbdocs.io/Peter%20Melander/SI?schema=public&view=table_structure&table=Organisations
